@@ -45,7 +45,7 @@ def root():
     return "To see the documentation please open the /docs"
 
 
-@app.post('/post', response_model=Timestamp, summary='Get post')
+@app.post('/post', response_model=Timestamp, summary='Get Post')
 def get_post():
     current_time = datetime.now()
     new_timestamp = Timestamp(id=post_db[-1].id + 1,
