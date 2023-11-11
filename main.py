@@ -71,7 +71,7 @@ def create_dog(dog: Dog):
 def get_dog_by_pk(pk: int):
     dog_retrieved = dogs_db.get(pk)
     if dog_retrieved is None:
-        raise HTTPException(status_code=404, detail="The dog with this ID isn't found")
+        raise HTTPException(status_code=404, detail="A dog with this ID isn't found")
     else:
         return dog_retrieved
 
@@ -79,9 +79,9 @@ def get_dog_by_pk(pk: int):
 @app.patch('/dog/{pk}', response_model=Dog, summary='Update Dog')
 def update_dog(pk: int, dog: Dog):
     if pk != dog.pk:
-        raise HTTPException(status_code=404, detail="Dog's ID is not the same as entered")
+        raise HTTPException(status_code=404, detail="A dog's ID is not the same as entered")
     if pk in dogs_db:
         dogs_db.update({dog.pk: dog})
         return dog
     else:
-        raise HTTPException(status_code=404, detail="The dog with such ID wasn't found")
+        raise HTTPException(status_code=404, detail="A dog with such ID wasn't found")
